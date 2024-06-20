@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      max-width: 360px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group input[type="password"]:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    .btn-container button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Signup</h2>
+  <form id="signupForm" onsubmit="return validateSignupForm()">
+    <div class="form-group">
+      <label for="signupName">Name:</label>
+      <input type="text" id="signupName" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="signupEmail">Email:</label>
+      <input type="email" id="signupEmail" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="signupPassword">Password:</label>
+      <input type="password" id="signupPassword" name="password" minlength="8" maxlength="15" required>
+    </div>
+    <div class="btn-container">
+      <button type="submit">Signup</button>
+    </div>
+  </form>
+  <div style="text-align: center; margin-top: 10px;">
+    <a href="login.html">Already have an account? Login here</a>
+  </div>
+</div>
+
+<script>
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  function validateSignupForm() {
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value.trim();
+
+    if (name === '') {
+      alert('Please enter your name.');
+      return false;
+    }
+
+    if (!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return false;
+    }
+
+    if (password.length < 8 || password.length > 15) {
+      alert('Password must be between 8 and 15 characters long.');
+      return false;
+    }
+
+    // Simulate signup process here (e.g., AJAX request to server)
+
+    alert('Signup successful!'); // Replace with actual signup logic
+    return true;
+  }
+</script>
+
+</body>
+</html>
